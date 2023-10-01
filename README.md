@@ -26,9 +26,22 @@ ToRA: A Tool-Integrated Reasoning Agent
 Repo for "ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving"
 </p>
 
-
 <p align="center">
     <img src="./static/images/math_gsm_hist.png" width="1000">
+</p>
+
+
+- Tool-Integrated Reasoning Format:
+
+<p align="center">
+    <img src="./static/images/example.png" width="800">
+</p>
+
+
+- ToRA Training Pipeline:
+
+<p align="center">
+    <img src="./static/images/pipeline.png" width="1000">
 </p>
 
 
