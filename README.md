@@ -1,16 +1,71 @@
-# Project
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+<h1 align="center">
+<img src="./static/images/tora_logo.png" width="100" alt="ToRA" />
+<br>
+ToRA: A Tool-Integrated Reasoning Agent
+</h1>
 
-As the maintainer of this project, please make a few updates:
+<div align="center">
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+![](https://img.shields.io/badge/Task-Mathematical%20Reasoning-orange)
+![](https://img.shields.io/badge/Model-Release%20Soon-blue)
+![](https://img.shields.io/badge/Code%20License-MIT-green)
+<br>
 
-## Contributing
+</div>
+
+<p align="center">
+  <!-- <a href="#-quick-start">Quick Start</a> • -->
+  <!-- <a href="https://zubingou.github.io/**project**/tora">Project Page</a> • -->
+  <a href="/static/pdfs/ToRA_2023-9-29.pdf">Paper</a>
+  <!-- <a href="https://arxiv.org/abs/xxxx.xxxx">Paper</a> -->
+  <!-- <a href="#%EF%B8%8F-citation">Citation</a> -->
+</p>
+
+<p align="center">
+Repo for "ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving"
+</p>
+
+
+<p align="center">
+    <img src="./static/images/math_gsm_hist.png" width="1000">
+</p>
+
+
+
+## Code & Models
+
+The code will be cleaned and uploaded within a few days, all ToRA models will be released.
+
+
+<!-- ## Models
+
+
+## 🚀 Quick Start
+
+### ⚙️ Setup
+
+```sh
+conda create -n tora python=3.10
+conda activate tora
+pip install -r requirements.txt
+```
+
+### ⚡️ Training
+
+
+### ⚖️ Evaluation
+
+
+
+## ☕️ Citation
+
+If you find this repository helpful, please consider citing our paper:
+
+```
+``` -->
+
+<!-- ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
@@ -22,12 +77,4 @@ provided by the bot. You will only need to do this once across all repos using o
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
-## Trademarks
-
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
-trademarks or logos is subject to and must follow 
-[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
-Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
-Any use of third-party trademarks or logos are subject to those third-party's policies.
+contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments. -->
