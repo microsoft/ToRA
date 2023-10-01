@@ -28,20 +28,30 @@ Repo for "ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solvi
 
 <p align="center">
     <img src="./static/images/math_gsm_hist.png" width="1000">
+        <br>
+    <em>Figure 1: Comparing ToRA with baselines on LLaMA-2 base models from 7B to 70B.</em>
 </p>
 
 
-- Tool-Integrated Reasoning Format:
+<h3 align="center">
+Tool-Integrated Reasoning Format
+</h3>
 
 <p align="center">
+<!-- > add img caption for the following figure: a basic example of single-round tool interaction -->
     <img src="./static/images/example.png" width="800">
+    <br>
+    <em>Figure 2: A basic example of single-round tool interaction, which interleaves rationales with program-based tool use</em>
 </p>
 
-
-- ToRA Training Pipeline:
+<h3 align="center">
+ToRA Training Pipeline
+</h3>
 
 <p align="center">
     <img src="./static/images/pipeline.png" width="1000">
+    <br>
+    <em>Figure 3: Training ToRA contains ① Imitation Learning, and ② output space shaping</em>
 </p>
 
 
