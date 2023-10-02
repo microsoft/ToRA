@@ -1,6 +1,6 @@
 
 <h1 align="center">
-<img src="./static/images/tora_logo.png" width="100" alt="ToRA" />
+<img src="./docs/staticimages/tora_logo.png" width="100" alt="ToRA" />
 <br>
 ToRA: A Tool-Integrated Reasoning Agent
 </h1>
@@ -17,8 +17,7 @@ ToRA: A Tool-Integrated Reasoning Agent
 <p align="center">
   <!-- <a href="#-quick-start">Quick Start</a> • -->
   <!-- <a href="https://zubingou.github.io/**project**/tora">Project Page</a> • -->
-  <a href="/static/pdfs/ToRA_2023-9-29.pdf">Paper</a>
-  <!-- <a href="https://arxiv.org/abs/xxxx.xxxx">Paper</a> -->
+  <a href="https://arxiv.org/pdf/2309.17452.pdf">Paper</a>
   <!-- <a href="#%EF%B8%8F-citation">Citation</a> -->
 </p>
 
@@ -27,9 +26,9 @@ Repo for "ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solvi
 </p>
 
 <p align="center">
-    <img src="./static/images/math_gsm_hist.png" width="1000">
+    <img src="./docs/staticimages/math_gsm_hist.png" width="1000">
         <br>
-    <em>Figure 1: Comparing ToRA with baselines on LLaMA-2 base models from 7B to 70B</em>
+    <em>Figure 1: Comparing ToRA with baselines on LLaMA-2 base models from 7B to 70B.</em>
 </p>
 
 
@@ -39,9 +38,9 @@ Tool-Integrated Reasoning Format
 
 <p align="center">
 <!-- > add img caption for the following figure: a basic example of single-round tool interaction -->
-    <img src="./static/images/example.png" width="800">
+    <img src="./docs/staticimages/example.png" width="800">
     <br>
-    <em>Figure 2: A basic example of single-round tool interaction, which interleaves rationales with program-based tool use</em>
+    <em>Figure 2: A basic example of single-round tool interaction, which interleaves rationales with program-based tool use.</em>
 </p>
 
 <h2 align="center">
@@ -49,9 +48,9 @@ ToRA Training Pipeline
 </h2>
 
 <p align="center">
-    <img src="./static/images/pipeline.png" width="1000">
+    <img src="./docs/staticimages/pipeline.png" width="1000">
     <br>
-    <em>Figure 3: Training ToRA contains ① Imitation Learning, and ② output space shaping</em>
+    <em>Figure 3: Training ToRA contains ① Imitation Learning, and ② output space shaping.</em>
 </p>
 
 
@@ -80,13 +79,22 @@ pip install -r requirements.txt
 ### ⚖️ Evaluation
 
 
+-->
 
 ## ☕️ Citation
 
 If you find this repository helpful, please consider citing our paper:
 
 ```
-``` -->
+@misc{gou2023tora,
+      title={ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving}, 
+      author={Zhibin Gou and Zhihong Shao and Yeyun Gong and yelong shen and Yujiu Yang and Minlie Huang and Nan Duan and Weizhu Chen},
+      year={2023},
+      eprint={2309.17452},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
 
 <!-- ## Contributing
 

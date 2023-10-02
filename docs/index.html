@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="ToRA is a series of Tool-integrated LLM-based Reasoning Agents designed to solve challenging mathematical reasoning problems by interacting with tools.">
+    <meta name="keywords" content="Tool-use, Agent, Mathematical Reasoning, LLMs, GPT-4, MATH, GSM8k">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ToRA: Tool-Integrated Reasoning Agents </title>
+    <link rel="icon" type="image/x-icon" href="static/images/tora_logo.png">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/css/bulma.min.css">
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/bulma-slider.min.js"></script>
+    <script src="static/js/index.js"></script>
+</head>
+
+<body>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <!-- <h1 class="title is-1 publication-title">ToRA:<br>A Tool-Integrated Reasoning Agent <br>for Mathematical Problem Solving</h1> -->
+                        <h1 class="title is-1 publication-title"> <img class="tora-logo"
+                                src="static/images/tora_logo.png" alt="ToRA Logo">ToRA: A Tool-Integrated Reasoning
+                            Agent <br>for Mathematical Problem Solving </h1>
+                        <div class="is-size-5 publication-authors">
+                            <div class="author-block">
+                                <span><a href="https://zubingou.github.io/" target="_blank">Zhibin
+                                        Gou</a></span><sup>1,2*</sup>,
+                                <span><a href="https://zhihongshao.github.io/" target="_blank">Zhihong
+                                        Shao</a></span><sup>1,2*</sup>,
+                                <span><a href="https://www.microsoft.com/en-us/research/people/yegong/"
+                                        target="_blank">Yeyun Gong</a></span><sup>2&dagger;</sup>,
+                                <span><a href="https://scholar.google.com/citations?user=S6OFEFEAAAAJ&hl=en"
+                                        tartet="_blank">Yelong Shen</a></span><sup>2</sup>
+                                <br>
+                                <span><a href="https://sites.google.com/view/iigroup-thu/about" tartet="_blank">Yujiu
+                                        Yang</a></span><sup>1&dagger;</sup>,
+                                <span><a href="http://coai.cs.tsinghua.edu.cn/hml" tartet="_blank">Minlie
+                                        Huang</a></span><sup>1&dagger;</sup>,
+                                <span><a href="https://nanduan.github.io/" tartet="_blank">Nan
+                                        Duan</a></span><sup>2</sup>,
+                                <span><a href="https://www.microsoft.com/en-us/research/people/wzchen/"
+                                        tartet="_blank">Weizhu Chen</a></span><sup>2</sup>
+                            </div>
+                            <!-- Paper authors -->
+                            <!-- <span class="author-block"> -->
+                            <!-- <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">x<sup>x</sup></a></span> -->
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>Tsinghua University, <sup>2</sup>Microsoft </span>
+
+                            <span class="eql-cntrb"><small><br><sup>*</sup>Equal Contribution
+                                    <sup>&dagger;</sup>Corresponding Authors</small></span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- Arxiv PDF link -->
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/pdf/2309.17452.pdf" target="_blank"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+
+                                <!-- Github link -->
+                                <span class="link-block">
+                                    <a href="https://github.com/microsoft/ToRA" target="_blank"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+
+                                <!-- ArXiv abstract Link -->
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/abs/2309.17452" target="_blank"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+
+                                    <span class="link-block">
+                                        <a href="https://github.com/microsoft/ToRA#models" target="_blank"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                🤗
+                                            </span>
+                                            <span>Models</span>
+                                        </a>
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- make it wider -->
+            <div class="container is-max-widescreen">
+            <div class="columns is-centered">
+                <script type="text/javascript">window.PlotlyConfig = { MathJaxConfig: 'local' };</script>
+                <script charset="utf-8" src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+                <div id="7f5afe93-b88d-459b-9237-fc082a297e0e" class="plotly-graph-div"
+                    style="width:100%;"></div>
+                <script type="text/javascript">                                    window.PLOTLYENV = window.PLOTLYENV || {}; if (document.getElementById("7f5afe93-b88d-459b-9237-fc082a297e0e")) {
+                        Plotly.newPlot("7f5afe93-b88d-459b-9237-fc082a297e0e", [{ "legendgroup": "Base", "marker": { "color": "#f28e2c" }, "name": "Base", "showlegend": true, "width": 0.2, "x": [-0.30000000000000004, 0.7, 1.7], "y": [0, 0, 0], "type": "bar", "xaxis": "x", "yaxis": "y" }, { "legendgroup": "SFT", "marker": { "color": "#76b7b2" }, "name": "SFT", "showlegend": true, "width": 0.2, "x": [-0.1, 0.9, 1.9], "y": [0, 0, 0], "type": "bar", "xaxis": "x", "yaxis": "y" }, { "legendgroup": "WizardMath", "marker": { "color": "#e15759" }, "name": "WizardMath", "showlegend": true, "width": 0.2, "x": [0.1, 1.1, 2.1], "y": [0, 0, 0], "type": "bar", "xaxis": "x", "yaxis": "y" }, { "legendgroup": "ToRA", "marker": { "color": "#4e79a7" }, "name": "ToRA", "showlegend": true, "width": 0.2, "x": [0.30000000000000004, 1.3, 2.3], "y": [0, 0, 0], "type": "bar", "xaxis": "x", "yaxis": "y" }, { "legendgroup": "Base", "marker": { "color": "#f28e2c" }, "name": "Base", "showlegend": false, "width": 0.2, "x": [-0.30000000000000004, 0.7, 1.7], "y": [0, 0, 0], "type": "bar", "xaxis": "x2", "yaxis": "y2" }, { "legendgroup": "SFT", "marker": { "color": "#76b7b2" }, "name": "SFT", "showlegend": false, "width": 0.2, "x": [-0.1, 0.9, 1.9], "y": [0, 0, 0], "type": "bar", "xaxis": "x2", "yaxis": "y2" }, { "legendgroup": "WizardMath", "marker": { "color": "#e15759" }, "name": "WizardMath", "showlegend": false, "width": 0.2, "x": [0.1, 1.1, 2.1], "y": [0, 0, 0], "type": "bar", "xaxis": "x2", "yaxis": "y2" }, { "legendgroup": "ToRA", "marker": { "color": "#4e79a7" }, "name": "ToRA", "showlegend": false, "width": 0.2, "x": [0.30000000000000004, 1.3, 2.3], "y": [0, 0, 0], "type": "bar", "xaxis": "x2", "yaxis": "y2" }, { "hovertemplate": "%{text}", "legendgroup": "GPT-4-Code", "line": { "color": "#ff9da7", "width": 2 }, "mode": "lines", "name": "GPT-4-Code", "showlegend": true, "text": ["51.8", "51.8", "51.8"], "visible": true, "x": [-0.5, 2.5], "xaxis": "x", "y": [51.8, 51.8], "yaxis": "y", "type": "scatter" }, { "hovertemplate": "%{text}", "legendgroup": "GPT-4", "line": { "color": "#af7aa1", "width": 2 }, "mode": "lines", "name": "GPT-4", "showlegend": true, "text": ["42.5", "42.5", "42.5"], "visible": true, "x": [-0.5, 2.5], "xaxis": "x", "y": [42.5, 42.5], "yaxis": "y", "type": "scatter" }, { "hovertemplate": "%{text}", "legendgroup": "ChatGPT-Code", "line": { "color": "#edc949", "width": 2 }, "mode": "lines", "name": "ChatGPT-Code", "showlegend": true, "text": ["38.7", "38.7", "38.7"], "visible": true, "x": [-0.5, 2.5], "xaxis": "x", "y": [38.7, 38.7], "yaxis": "y", "type": "scatter" }, { "hovertemplate": "%{text}", "legendgroup": "ChatGPT", "line": { "color": "#59a14f", "width": 2 }, "mode": "lines", "name": "ChatGPT", "showlegend": true, "text": ["35.5", "35.5", "35.5"], "visible": true, "x": [-0.5, 2.5], "xaxis": "x", "y": [35.5, 35.5], "yaxis": "y", "type": "scatter" }, { "hovertemplate": "%{text}", "legendgroup": "GPT-4-Code", "line": { "color": "#ff9da7", "width": 2 }, "mode": "lines", "name": "GPT-4-Code", "showlegend": false, "text": ["94.2", "94.2", "94.2"], "visible": true, "x": [-0.5, 2.5], "xaxis": "x2", "y": [94.2, 94.2], "yaxis": "y2", "type": "scatter" }, { "hovertemplate": "%{text}", "legendgroup": "GPT-4", "line": { "color": "#af7aa1", "width": 2 }, "mode": "lines", "name": "GPT-4", "showlegend": false, "text": ["92.0", "92.0", "92.0"], "visible": true, "x": [-0.5, 2.5], "xaxis": "x2", "y": [92.0, 92.0], "yaxis": "y2", "type": "scatter" }, { "hovertemplate": "%{text}", "legendgroup": "ChatGPT-Code", "line": { "color": "#edc949", "width": 2 }, "mode": "lines", "name": "ChatGPT-Code", "showlegend": false, "text": ["78.6", "78.6", "78.6"], "visible": true, "x": [-0.5, 2.5], "xaxis": "x2", "y": [78.6, 78.6], "yaxis": "y2", "type": "scatter" }, { "hovertemplate": "%{text}", "legendgroup": "ChatGPT", "line": { "color": "#59a14f", "width": 2 }, "mode": "lines", "name": "ChatGPT", "showlegend": false, "text": ["80.8", "80.8", "80.8"], "visible": true, "x": [-0.5, 2.5], "xaxis": "x2", "y": [80.8, 80.8], "yaxis": "y2", "type": "scatter" }], { "template": { "data": { "histogram2dcontour": [{ "type": "histogram2dcontour", "colorbar": { "outlinewidth": 0, "ticks": "" }, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]] }], "choropleth": [{ "type": "choropleth", "colorbar": { "outlinewidth": 0, "ticks": "" } }], "histogram2d": [{ "type": "histogram2d", "colorbar": { "outlinewidth": 0, "ticks": "" }, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]] }], "heatmap": [{ "type": "heatmap", "colorbar": { "outlinewidth": 0, "ticks": "" }, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]] }], "heatmapgl": [{ "type": "heatmapgl", "colorbar": { "outlinewidth": 0, "ticks": "" }, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]] }], "contourcarpet": [{ "type": "contourcarpet", "colorbar": { "outlinewidth": 0, "ticks": "" } }], "contour": [{ "type": "contour", "colorbar": { "outlinewidth": 0, "ticks": "" }, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]] }], "surface": [{ "type": "surface", "colorbar": { "outlinewidth": 0, "ticks": "" }, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]] }], "mesh3d": [{ "type": "mesh3d", "colorbar": { "outlinewidth": 0, "ticks": "" } }], "scatter": [{ "fillpattern": { "fillmode": "overlay", "size": 10, "solidity": 0.2 }, "type": "scatter" }], "parcoords": [{ "type": "parcoords", "line": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "scatterpolargl": [{ "type": "scatterpolargl", "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "bar": [{ "error_x": { "color": "#2a3f5f" }, "error_y": { "color": "#2a3f5f" }, "marker": { "line": { "color": "#E5ECF6", "width": 0.5 }, "pattern": { "fillmode": "overlay", "size": 10, "solidity": 0.2 } }, "type": "bar" }], "scattergeo": [{ "type": "scattergeo", "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "scatterpolar": [{ "type": "scatterpolar", "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "histogram": [{ "marker": { "pattern": { "fillmode": "overlay", "size": 10, "solidity": 0.2 } }, "type": "histogram" }], "scattergl": [{ "type": "scattergl", "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "scatter3d": [{ "type": "scatter3d", "line": { "colorbar": { "outlinewidth": 0, "ticks": "" } }, "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "scattermapbox": [{ "type": "scattermapbox", "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "scatterternary": [{ "type": "scatterternary", "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "scattercarpet": [{ "type": "scattercarpet", "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "carpet": [{ "aaxis": { "endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f" }, "baxis": { "endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f" }, "type": "carpet" }], "table": [{ "cells": { "fill": { "color": "#EBF0F8" }, "line": { "color": "white" } }, "header": { "fill": { "color": "#C8D4E3" }, "line": { "color": "white" } }, "type": "table" }], "barpolar": [{ "marker": { "line": { "color": "#E5ECF6", "width": 0.5 }, "pattern": { "fillmode": "overlay", "size": 10, "solidity": 0.2 } }, "type": "barpolar" }], "pie": [{ "automargin": true, "type": "pie" }] }, "layout": { "autotypenumbers": "strict", "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": { "color": "#2a3f5f" }, "hovermode": "closest", "hoverlabel": { "align": "left" }, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": { "bgcolor": "#E5ECF6", "angularaxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" }, "radialaxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" } }, "ternary": { "bgcolor": "#E5ECF6", "aaxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" }, "baxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" }, "caxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" } }, "coloraxis": { "colorbar": { "outlinewidth": 0, "ticks": "" } }, "colorscale": { "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]] }, "xaxis": { "gridcolor": "white", "linecolor": "white", "ticks": "", "title": { "standoff": 15 }, "zerolinecolor": "white", "automargin": true, "zerolinewidth": 2 }, "yaxis": { "gridcolor": "white", "linecolor": "white", "ticks": "", "title": { "standoff": 15 }, "zerolinecolor": "white", "automargin": true, "zerolinewidth": 2 }, "scene": { "xaxis": { "backgroundcolor": "#E5ECF6", "gridcolor": "white", "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white", "gridwidth": 2 }, "yaxis": { "backgroundcolor": "#E5ECF6", "gridcolor": "white", "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white", "gridwidth": 2 }, "zaxis": { "backgroundcolor": "#E5ECF6", "gridcolor": "white", "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white", "gridwidth": 2 } }, "shapedefaults": { "line": { "color": "#2a3f5f" } }, "annotationdefaults": { "arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1 }, "geo": { "bgcolor": "white", "landcolor": "#E5ECF6", "subunitcolor": "white", "showland": true, "showlakes": true, "lakecolor": "white" }, "title": { "x": 0.05 }, "mapbox": { "style": "light" } } }, "xaxis": { "anchor": "y", "domain": [0.0, 0.45], "title": { "text": "MATH", "font": { "size": 16 } }, "tickfont": { "size": 14 }, "tickvals": [0, 1, 2], "ticktext": ["7B", "13B", "70B"] }, "yaxis": { "anchor": "x", "domain": [0.0, 1.0], "range": [0, 60], "title": { "text": "Accuracy (%)" }, "tickfont": { "size": 14 } }, "xaxis2": { "anchor": "y2", "domain": [0.55, 1.0], "title": { "text": "GSM8k", "font": { "size": 16 } }, "tickfont": { "size": 14 }, "tickvals": [0, 1, 2], "ticktext": ["7B", "13B", "70B"] }, "yaxis2": { "anchor": "x2", "domain": [0.0, 1.0], "range": [0, 100] }, "legend": { "font": { "size": 16 }, "orientation": "h", "yanchor": "bottom", "y": 1.02, "xanchor": "center", "x": 0.5 }, "height": 650 }, { "responsive": true }).then(function () {
+                            Plotly.addFrames('7f5afe93-b88d-459b-9237-fc082a297e0e', [{ "data": [{ "hovertemplate": "%{text}", "legendgroup": "Base", "marker": { "color": "#f28e2c" }, "showlegend": true, "text": ["4.1", "6.3", "14.4"], "textfont": { "color": "white", "family": "sans-serif", "size": 12 }, "textposition": "inside", "width": 0.2, "x": [-0.30000000000000004, 0.7, 1.7], "y": [4.1, 6.3, 14.4], "type": "bar" }, { "hovertemplate": "%{text}", "legendgroup": "SFT", "marker": { "color": "#76b7b2" }, "showlegend": true, "text": ["7.2", "9.2", "14.9"], "textfont": { "color": "white", "family": "sans-serif", "size": 12 }, "textposition": "inside", "width": 0.2, "x": [-0.1, 0.9, 1.9], "y": [7.2, 9.2, 14.9], "type": "bar" }, { "hovertemplate": "%{text}", "legendgroup": "WizardMath", "marker": { "color": "#e15759" }, "showlegend": true, "text": ["10.7", "14.0", "22.7"], "textfont": { "color": "white", "family": "sans-serif", "size": 12 }, "textposition": "inside", "width": 0.2, "x": [0.1, 1.1, 2.1], "y": [10.7, 14.0, 22.7], "type": "bar" }, { "hovertemplate": "%{text}", "legendgroup": "ToRA", "marker": { "color": "#4e79a7" }, "showlegend": true, "text": ["44.6", "48.1", "49.7"], "textfont": { "color": "white", "family": "sans-serif", "size": 12 }, "textposition": "inside", "width": 0.2, "x": [0.30000000000000004, 1.3, 2.3], "y": [44.6, 48.1, 49.7], "type": "bar" }, { "hovertemplate": "%{text}", "legendgroup": "Base", "marker": { "color": "#f28e2c" }, "showlegend": false, "text": ["13.3", "24.3", "57.8"], "textfont": { "color": "white", "family": "sans-serif", "size": 12 }, "textposition": "inside", "width": 0.2, "x": [-0.30000000000000004, 0.7, 1.7], "y": [13.3, 24.3, 57.8], "type": "bar" }, { "hovertemplate": "%{text}", "legendgroup": "SFT", "marker": { "color": "#76b7b2" }, "showlegend": false, "text": ["41.3", "51.1", "55.2"], "textfont": { "color": "white", "family": "sans-serif", "size": 12 }, "textposition": "inside", "width": 0.2, "x": [-0.1, 0.9, 1.9], "y": [41.3, 51.1, 55.2], "type": "bar" }, { "hovertemplate": "%{text}", "legendgroup": "WizardMath", "marker": { "color": "#e15759" }, "showlegend": false, "text": ["54.9", "63.9", "81.6"], "textfont": { "color": "white", "family": "sans-serif", "size": 12 }, "textposition": "inside", "width": 0.2, "x": [0.1, 1.1, 2.1], "y": [54.9, 63.9, 81.6], "type": "bar" }, { "hovertemplate": "%{text}", "legendgroup": "ToRA", "marker": { "color": "#4e79a7" }, "showlegend": false, "text": ["72.6", "75.8", "84.3"], "textfont": { "color": "white", "family": "sans-serif", "size": 12 }, "textposition": "inside", "width": 0.2, "x": [0.30000000000000004, 1.3, 2.3], "y": [72.6, 75.8, 84.3], "type": "bar" }] }]);
+                        }).then(function () {
+                            Plotly.animate('7f5afe93-b88d-459b-9237-fc082a297e0e', null);
+                        })
+                    };</script>
+            </div>
+            <h2 class="subtitle has-text-centered">
+                Figure 1: Comparing ToRA with baselines on LLaMA-2 base models from 7B to 70B.
+            </h2>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Teaser video-->
+    <!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video poster="" id="tree" autoplay controls muted loop height="100%">
+        <source src="static/videos/banner_video.mp4"
+        type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+      </h2>
+    </div>
+  </div>
+</section> -->
+    <!-- End teaser video -->
+
+
+    <!-- Paper abstract -->
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <div class="content has-text-justified">
+                        <div class="content">
+                        <p style="font-size: 1.2em;">
+                            ToRA is a series of <b>Tool-integrated Reasoning Agents</b>
+                            designed to solve challenging mathematical reasoning problems by interacting with tools,
+                            e.g., computation libraries and symbolic solvers. ToRA series <b>seamlessly integrate natural
+                            language reasoning with the utilization of external tools</b>, thereby amalgamating the
+                            analytical prowess of language and the computational efficiency of external tools.
+                            <br>
+                            <br>
+                            ToRA models significantly outperform open-source models on 10 mathematical reasoning
+                            datasets across all scales with 13%-19% absolute improvements on average. Notably, ToRA-7B
+                            reaches 44.6% on the competition-level dataset MATH, surpassing the best open-source model
+                            WizardMath-70B by 22% absolute. <b>ToRA-Code-34B is also the first open-source model that achieves an accuracy exceeding 50% on MATH</b>, which significantly outperforms GPT-4’s
+                            CoT result, and is competitive with GPT-4 solving problems with programs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End paper abstract -->
+
+    <!-- <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h2 class="title is-3">Results</h2>
+                <div class="item">
+                    <img src="static/images/math_gsm_hist.png" alt="MY ALT TEXT" />
+                    <h2 class="subtitle has-text-centered">
+                        First image description.
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="container">
+                        <h2 class="title is-3 has-text-centered">Tool-Integrated Reasoning</h2>
+                        <div class="item">
+                            <img src="static/images/example.png" alt="MY ALT TEXT" />
+                            <h2 class="subtitle">
+                                Figure 2: A basic example of single-round tool interaction, which interleaves rationales with program-based tool use.
+                            </h2>
+                        </div>
+                        <div class="container">
+                            <div class="item">
+                                <img src="static/images/format_ablation.png" alt="MY ALT TEXT" />
+                                <h2 class="subtitle">
+                                    Figure 3: Comparison of three formats: (1) Rationale-only: step-by-step natural language reasoning
+                                    like CoT; (2) Program-only: solving problems with programs like PAL; (3) Tool-integrated Reasoning
+                                    used by TORA: interweaving rationale and program execution to solve problems. 
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop is-centered has-text-centered">
+                <div class="container">
+                    <h2 class="title is-3">Training</h2>
+                    <div class="item">
+                        <img src="static/images/pipeline.png" alt="MY ALT TEXT" />
+                        <h2 class="subtitle">
+                            Figure 4: Training TORA contains two steps. ① Imitation Learning: Prompt LLMs like GPT-4 to
+                            generate Tool-integrated Reasoning trajectories (ToRA-Corpus) and use this corpus to fine-tune a
+                            model {{mathcal|M}}; ② Output Space Shaping: Sample diverse tool-use trajectories with M, keep the valid
+                            ones, correct the invalid ones with a teacher model M′, and retrain M on the union of sampled valid
+                            trajectories, corrected ones, and the initial TORA-CORPUS to obtain TORA
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="item">
+                        <img src="static/images/shaping_ablation.png" alt="MY ALT TEXT" />
+                        <h2 class="subtitle">
+                            Figure 5: Ablation on output space shaping strategies using CodeLLaMA.
+                        </h2>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop is-centered has-text-centered">
+                <div class="container">
+                    <h2 class="title is-3">Tool Usage Patterns</h2>
+                    <div class="item">
+                        <img src="static/images/lib_freq_topic.png" alt="MY ALT TEXT" />
+                        <h2 class="subtitle has-text-centered">
+                            Figure 6: Library usage frequency and accuracy on each sub-topic of MATH.
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Youtube video -->
+    <!-- <section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Video Presentation</h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          
+          <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+    <!-- End youtube video -->
+
+
+    <!-- Video carousel -->
+    <!-- <section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Another Carousel</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-video1">
+          <video poster="" id="video1" autoplay controls muted loop height="100%">
+            <source src="static/videos/carousel1.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video2">
+          <video poster="" id="video2" autoplay controls muted loop height="100%">
+            <source src="static/videos/carousel2.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video3">
+          <video poster="" id="video3" autoplay controls muted loop height="100%">\
+            <source src="static/videos/carousel3.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+    <!-- End video carousel -->
+
+
+
+
+    <!-- <section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title">Poster</h2>
+      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
+          </iframe>
+      </div>
+    </div>
+  </section> -->
+
+
+    <!--BibTex citation -->
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@misc{gou2023tora,
+    title={ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving}, 
+    author={Zhibin Gou and Zhihong Shao and Yeyun Gong and yelong shen and Yujiu Yang and Minlie Huang and Nan Duan and Weizhu Chen},
+    year={2023},
+    eprint={2309.17452},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
+}</code></pre>
+        </div>
+    </section>
+    <!--End BibTex citation -->
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            This page was built using the <a
+                                href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                                target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+                            <!-- You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative -->
+                            <!-- Commons Attribution-ShareAlike 4.0 International License</a>. -->
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Statcounter tracking code -->
+
+    <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+</body>
+
+</html>
