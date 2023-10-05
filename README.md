@@ -16,8 +16,8 @@ ToRA: A Tool-Integrated Reasoning Agent
 
 <p align="center">
   <!-- <a href="#-quick-start">Quick Start</a> • -->
-  <a href="https://microsoft.github.io/ToRA/">Project Page</a> •
-  <a href="https://arxiv.org/pdf/2309.17452.pdf">Paper</a>
+  [<a href="https://microsoft.github.io/ToRA/">Website</a>] •
+  [<a href="https://arxiv.org/pdf/2309.17452.pdf">Paper</a>]
   <!-- <a href="#%EF%B8%8F-citation">Citation</a> -->
 </p>
 

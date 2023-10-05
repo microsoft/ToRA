@@ -17,8 +17,8 @@ body {
 }
 
 
-.teaser .hero-body {
-  padding-top: 0rem;
+.hero-body {
+  padding-top: 0.5rem;
   padding-bottom: 3rem;
 }
 
@@ -26,36 +26,12 @@ body {
   font-family: 'Google Sans', sans-serif;
 }
 
-
-.publication-banner {
-  max-height: parent;
-
-}
-
-.publication-banner video {
-  position: relative;
-  left: auto;
-  top: auto;
-  transform: none;
-  object-fit: fit;
-}
-
-.publication-title {  
-    font-family: 'Google Sans', sans-serif;
-    text-align: center;  
-    color: #4a4a4a;  
-    background-color: #ffffff;  
-    padding: 1.5rem;  
-    border-radius: 1rem;  
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);  
-}  
-  
 .tora-logo {  
-    width: 80px;  
-    height: auto;  
-    display: block;  
-    margin: 0 auto;  
-    margin-bottom: 0.5rem;  
+    width: 70px;  
+    height: auto;
+    display: inline;  
+    /* margin: 0 auto;   */
+    margin-bottom: -1.0rem;  
 }  
 
 .publication-authors {
@@ -90,10 +66,6 @@ body {
 .publication-banner img {
 }
 
-.publication-authors {
-  /*color: #4286f4;*/
-}
-
 .publication-video {
     position: relative;
     width: 100%;
@@ -112,18 +84,38 @@ body {
     height: 100%;
 }
 
-.publication-body img {
-}
-
 .results-carousel {
   overflow: hidden;
 }
 
-.results-carousel .item {
+.subtitle {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #222;
+}
+
+li {
+    font-size: 1.1rem;
+    color: #222; 
+    list-style-type: circle;
+    margin-left: 20px;
+}
+
+.title {
+    padding-top: 1rem;
+
+}
+
+.item {
   margin: 5px;
   overflow: hidden;
-  padding: 20px;
-  font-size: 0;
+  padding-bottom: 15px;
+  padding-top: 10px;
+  /* font-size: 0; */
 }
 
 .results-carousel video {
