@@ -10,7 +10,6 @@ ToRA: A Tool-Integrated Reasoning Agent
 ![](https://img.shields.io/badge/Task-Mathematical%20Reasoning-orange)
 ![](https://img.shields.io/badge/Model-Released-blue)
 ![](https://img.shields.io/badge/Code%20License-MIT-green)
-<br>
 
 </div>
 
@@ -23,9 +22,7 @@ ToRA: A Tool-Integrated Reasoning Agent
   <!-- <a href="#%EF%B8%8F-citation">Citation</a> -->
 </p>
 
-<p align="center">
-Repo for "ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving"
-</p>
+Repo for "[ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving](https://arxiv.org/pdf/2309.17452.pdf)"
 
 <p align="center">
     <img src="./docs/static/images/math_gsm_hist.png" width="1000">
@@ -85,7 +82,7 @@ pip install -r requirements.txt
 
 ### 🪁 Inference
 
-We provide a script for inference, simply config the `MODEL_NAME_OR_PATH` and `DATA` in `scripts/infer.sh` and run the following command:
+We provide a script for inference, simply config the `MODEL_NAME_OR_PATH` and `DATA` in `[src/scripts/infer.sh](/src/scripts/infer.sh)` and run the following command:
 
 ```sh
 bash scritps/infer.sh
@@ -95,7 +92,7 @@ We also open-source the [model outputs](/src/outputs/llm-agents/) from our best 
 
 ### ⚖️ Evaluation
 
-The `src/eval/grader.py` file contains the grading logic that assesses the accuracy of the predicted answer by comparing it to the ground truth. This logic is developed based on the Hendrycks' MATH grading system, which we have manually verified on the MATH dataset to minimize false positives and false negatives.
+The `[src/eval/grader.py](src/eval/grader.py)` file contains the grading logic that assesses the accuracy of the predicted answer by comparing it to the ground truth. This logic is developed based on the Hendrycks' MATH grading system, which we have manually verified on the MATH dataset to minimize false positives and false negatives.
 
 To evaluate the predicted answer, run the following command:
 
