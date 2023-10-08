@@ -40,12 +40,12 @@ Repo for "ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solvi
 
 | Model | Size | GSM8k | MATH |
 |---|---|---|---|
-| [ToRA-7B]() | 7B | 68.8 | 40.1 |
-| [ToRA-Code-7B]() | 7B | 72.6 | 44.6 |
-| [ToRA-13B]() | 13B |  72.7 | 43.0 |
-| [ToRA-Code-13B]() | 13B | 75.8 | 48.1 |
-| [ToRA-Code-34B*]() | 34B | 80.7 | **51.0** |
-| [ToRA-70B]() | 70B | **84.3** | 49.7 |
+| [ToRA-7B](https://huggingface.co/llm-agents/tora-7b-v1.0) | 7B | 68.8 | 40.1 |
+| [ToRA-Code-7B](https://huggingface.co/llm-agents/tora-code-7b-v1.0) | 7B | 72.6 | 44.6 |
+| [ToRA-13B](https://huggingface.co/llm-agents/tora-13b-v1.0) | 13B |  72.7 | 43.0 |
+| [ToRA-Code-13B](https://huggingface.co/llm-agents/tora-code-13b-v1.0) | 13B | 75.8 | 48.1 |
+| [ToRA-Code-34B*](https://huggingface.co/llm-agents/tora-code-34b-v1.0) | 34B | 80.7 | **51.0** |
+| [ToRA-70B](https://huggingface.co/llm-agents/tora-70b-v1.0) | 70B | **84.3** | 49.7 |
 
 *ToRA-Code-34B is currently the first and only open-source model to achieve over 50% accuracy (pass@1) on the MATH dataset. By open-sourcing our codes and models, we hope more breakthroughs will come!
 

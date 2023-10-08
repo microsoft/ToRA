@@ -25,9 +25,9 @@ fi
 
 BASE_MODEL=$1
 if [ "$BASE_MODEL" = "llama2" ]; then
-    MODEL_PATH=/zhibin/cache/llama/${BASE_MODEL}/Llama-2-${MODEL_SIZE}-hf
+    MODEL_PATH=/path/to/llama2/${BASE_MODEL}/Llama-2-${MODEL_SIZE}-hf
 elif [ "$BASE_MODEL" = "codellama" ]; then
-    MODEL_PATH=/zhibin/cache/llama/${BASE_MODEL}/CodeLlama-${MODEL_SIZE}-Python-hf
+    MODEL_PATH=/path/to/codellama/${BASE_MODEL}/CodeLlama-${MODEL_SIZE}-Python-hf
 else
     echo "BASE_MODEL should be llama2 or codellama"
     exit 1
@@ -44,7 +44,7 @@ GRADIENT_ACC_STEPS=$(($TOTAL_BATCH_SIZE/$NUM_GPUS/$BATCH_SIZE_PER_GPU))
 echo "Training llama model ${MODEL_SIZE} using $NUM_GPUS GPUs, $BATCH_SIZE_PER_GPU batch size per GPU, $GRADIENT_ACC_STEPS gradient accumulation steps"
 
 TRAIN_FILE=../data/${DATA_NAME}/train.jsonl
-OUTPUT_DIR=/mnt/zhibin/output/${BASE_MODEL}_${MODEL_SIZE}/${JOB_NAME}
+OUTPUT_DIR=/path/to/output/${BASE_MODEL}_${MODEL_SIZE}/${JOB_NAME}
 mkdir -p $OUTPUT_DIR
 
 

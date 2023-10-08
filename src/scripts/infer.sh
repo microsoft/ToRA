@@ -1,5 +1,4 @@
 set -ex
-export HF_HOME=/mnt/zhibin/cache/huggingface
 
 # MODEL_NAME_OR_PATH="llm-agents/tora-code-34b-v1.0"
 MODEL_NAME_OR_PATH="llm-agents/tora-70b-v1.0"
