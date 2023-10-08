@@ -55,7 +55,7 @@ Please visit our [website](https://microsoft.github.io/ToRA/) for more details.
 ### Tool-Integrated Reasoning
 
 <p align="center">
-    <img src="./docs/static/images/example.png" width="600">
+    <img src="./docs/static/images/example.png" width="800">
     <br>
     <em>Figure 2: A basic example of single-round tool interaction, which interleaves rationales with program-based tool use.</em>
 </p>
@@ -84,7 +84,7 @@ pip install -r requirements.txt
 
 ### 🪁 Inference
 
-We provide a script for inference, simply config the `MODEL_NAME_OR_PATH` and `DATA` in `[src/scripts/infer.sh](/src/scripts/infer.sh)` and run the following command:
+We provide a script for inference, simply config the `MODEL_NAME_OR_PATH` and `DATA` in [src/scripts/infer.sh](/src/scripts/infer.sh) and run the following command:
 
 ```sh
 bash scritps/infer.sh
@@ -94,7 +94,7 @@ We also open-source the [model outputs](/src/outputs/llm-agents/) from our best 
 
 ### ⚖️ Evaluation
 
-The `[src/eval/grader.py](src/eval/grader.py)` file contains the grading logic that assesses the accuracy of the predicted answer by comparing it to the ground truth. This logic is developed based on the Hendrycks' MATH grading system, which we have manually verified on the MATH dataset to minimize false positives and false negatives.
+The [src/eval/grader.py](/src/eval/) file contains the grading logic that assesses the accuracy of the predicted answer by comparing it to the ground truth. This logic is developed based on the Hendrycks' MATH grading system, which we have manually verified on the MATH dataset to minimize false positives and false negatives.
 
 To evaluate the predicted answer, run the following command:
 
