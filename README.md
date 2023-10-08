@@ -15,14 +15,16 @@ ToRA: A Tool-Integrated Reasoning Agent
 
 <p align="center">
   <!-- <a href="#-quick-start">Quick Start</a> • -->
-  <a href="https://microsoft.github.io/ToRA/"><b>[Website]</b></a> •
-  <a href="https://arxiv.org/pdf/2309.17452.pdf"><b>[Paper]</b></a> •
-  <a href="https://www.reddit.com/r/LocalLLaMA/comments/1703k6d/tora_a_toolintegrated_reasoning_agent_for/"><b>[Reddit]</b></a> •
-  <a href="https://notes.aimodels.fyi/researchers-announce-tora-training-language-models-to-better-understand-math-using-external-tools/">[Unofficial Blog]</a>
+  <a href="https://microsoft.github.io/ToRA/" target="_blank"><b>[Website]</b></a> •
+  <a href="https://arxiv.org/pdf/2309.17452.pdf" target="_blank"><b>[Paper]</b></a> •
+  <a href="https://www.reddit.com/r/LocalLLaMA/comments/1703k6d/tora_a_toolintegrated_reasoning_agent_for/" target="_blank"><b>[Reddit]</b></a> •
+  <a href="https://notes.aimodels.fyi/researchers-announce-tora-training-language-models-to-better-understand-math-using-external-tools/" target="_blank">[Unofficial Blog]</a>
   <!-- <a href="#%EF%B8%8F-citation">Citation</a> -->
 </p>
 
-Repo for "[ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving](https://arxiv.org/pdf/2309.17452.pdf)"
+<p align="center">
+Repo for "<a href="https://arxiv.org/pdf/2309.17452.pdf" target="_blank">ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving</a>"
+</p>
 
 <p align="center">
     <img src="./docs/static/images/math_gsm_hist.png" width="1000">
