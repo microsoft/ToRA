@@ -39,7 +39,7 @@ Repo for "ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solvi
 - [Sep. 29th] ToRA paper, repo, and website released.
 
 | Model | Size | GSM8k | MATH |
-|---|---|---|---|---|
+|---|---|---|---|
 | [ToRA-7B]() | 7B | 68.8 | 40.1 |
 | [ToRA-Code-7B]() | 7B | 72.6 | 44.6 |
 | [ToRA-13B]() | 13B |  72.7 | 43.0 |
