@@ -76,6 +76,7 @@ Please visit our [website](https://microsoft.github.io/ToRA/) for more details.
 We recommend using [Conda](https://docs.conda.io/projects/miniconda) to manage your environment. We use [vLLM](https://github.com/vllm-project/vllm) (0.1.4) to accelerate inference. Run the following commands to setup your environment:
 
 ```sh
+git clone https://github.com/microsoft/ToRA.git && cd ToRA/src
 conda create -n tora python=3.10
 conda activate tora
 pip install torch==2.0.1 --index-url https://download.pytorch.org/whl/cu118 # CUDA 11.8 for example
