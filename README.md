@@ -14,16 +14,20 @@ ToRA: A Tool-Integrated Reasoning Agent
 </div>
 
 <p align="center">
+  <a href="https://microsoft.github.io/ToRA/"><b>[🌐 Website]</b></a> •
+  <a href="https://arxiv.org/abs/2309.17452"><b>[📜 Paper]</b></a> •
+  <a href="https://huggingface.co/llm-agents"><b>[🤗 HF Models]</b></a> •
+  <a href="https://github.com/microsoft/ToRA"><b>[🐱 GitHub]</b></a>
+  <br>
+  <a href="https://twitter.com/zhs05232838/status/1708860992631763092"><b>[🐦 Twitter]</b></a> •
+  <a href="https://www.reddit.com/r/LocalLLaMA/comments/1703k6d/tora_a_toolintegrated_reasoning_agent_for/"><b>[💬 Reddit]</b></a> •
+  <a href="https://notes.aimodels.fyi/researchers-announce-tora-training-language-models-to-better-understand-math-using-external-tools/">[🍀 Unofficial Blog]</a>
   <!-- <a href="#-quick-start">Quick Start</a> • -->
-  <a href="https://microsoft.github.io/ToRA/" target="_blank"><b>[Website]</b></a> •
-  <a href="https://arxiv.org/pdf/2309.17452.pdf" target="_blank"><b>[Paper]</b></a> •
-  <a href="https://www.reddit.com/r/LocalLLaMA/comments/1703k6d/tora_a_toolintegrated_reasoning_agent_for/" target="_blank"><b>[Reddit]</b></a> •
-  <a href="https://notes.aimodels.fyi/researchers-announce-tora-training-language-models-to-better-understand-math-using-external-tools/" target="_blank">[Unofficial Blog]</a>
   <!-- <a href="#%EF%B8%8F-citation">Citation</a> -->
 </p>
 
 <p align="center">
-Repo for "<a href="https://arxiv.org/pdf/2309.17452.pdf" target="_blank">ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving</a>"
+Repo for "<a href="https://arxiv.org/abs/2309.17452" target="_blank">ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving</a>"
 </p>
 
 <p align="center">
@@ -32,26 +36,30 @@ Repo for "<a href="https://arxiv.org/pdf/2309.17452.pdf" target="_blank">ToRA: A
     <em>Figure 1: Comparing ToRA with baselines on LLaMA-2 base models from 7B to 70B.</em>
 </p>
 
+
 ## 🔥 News
 
-- [Oct. 8th] 🔥🔥🔥 All ToRA models released at [HuggingFace](https://huggingface.co/llm-agents)!!! 
-- [Sep. 29th] ToRA paper, repo, and website released.
-
-| Model | Size | GSM8k | MATH |
-|---|---|---|---|
-| [ToRA-7B](https://huggingface.co/llm-agents/tora-7b-v1.0) | 7B | 68.8 | 40.1 |
-| [ToRA-Code-7B](https://huggingface.co/llm-agents/tora-code-7b-v1.0) | 7B | 72.6 | 44.6 |
-| [ToRA-13B](https://huggingface.co/llm-agents/tora-13b-v1.0) | 13B |  72.7 | 43.0 |
-| [ToRA-Code-13B](https://huggingface.co/llm-agents/tora-code-13b-v1.0) | 13B | 75.8 | 48.1 |
-| [ToRA-Code-34B*](https://huggingface.co/llm-agents/tora-code-34b-v1.0) | 34B | 80.7 | **51.0** |
-| [ToRA-70B](https://huggingface.co/llm-agents/tora-70b-v1.0) | 70B | **84.3** | 49.7 |
-
-*ToRA-Code-34B is currently the first and only open-source model to achieve over 50% accuracy (pass@1) on the MATH dataset. By open-sourcing our codes and models, we hope more breakthroughs will come!
+- [2023/10/08] 🔥🔥🔥 All ToRA models released at [🤗 HuggingFace](https://huggingface.co/llm-agents)!!! 
+- [2023/09/29] ToRA paper, repo, and website released.
 
 ## 💡 Introduction
 
-Please visit our [website](https://microsoft.github.io/ToRA/) for more details.
+ToRA is a series of Tool-integrated Reasoning Agents designed to solve challenging mathematical reasoning problems by interacting with tools, e.g., computation libraries and symbolic solvers. ToRA series seamlessly integrate natural language reasoning with the utilization of external tools, thereby amalgamating the analytical prowess of language and the computational efficiency of external tools.
 
+| Model | Size | GSM8k | MATH | AVG@10 math tasks<sup>&dagger;</sup> |
+|---|---|---|---|---|
+| GPT-4 | - | 92.0 | 42.5 | 78.3 |
+| GPT-4 (PAL) | - | 94.2 | 51.8 | 86.4 |
+| [<img src="./docs/static/images/tora_logo.png" width="16" alt="ToRA" /> ToRA-7B](https://huggingface.co/llm-agents/tora-7b-v1.0) | 7B | 68.8 | 40.1 | 62.4|
+| [<img src="./docs/static/images/tora_logo.png" width="16" alt="ToRA" /> ToRA-Code-7B](https://huggingface.co/llm-agents/tora-code-7b-v1.0) | 7B | 72.6 | 44.6 | 66.5| 
+| [<img src="./docs/static/images/tora_logo.png" width="16" alt="ToRA" /> ToRA-13B](https://huggingface.co/llm-agents/tora-13b-v1.0) | 13B |  72.7 | 43.0 | 65.9|
+| [<img src="./docs/static/images/tora_logo.png" width="16" alt="ToRA" /> ToRA-Code-13B](https://huggingface.co/llm-agents/tora-code-13b-v1.0) | 13B | 75.8 | 48.1 | 71.3 |
+| [<img src="./docs/static/images/tora_logo.png" width="16" alt="ToRA" /> ToRA-Code-34B<sup>*</sup>](https://huggingface.co/llm-agents/tora-code-34b-v1.0) | 34B | 80.7 | **51.0** | 74.8 |
+| [<img src="./docs/static/images/tora_logo.png" width="16" alt="ToRA" /> ToRA-70B](https://huggingface.co/llm-agents/tora-70b-v1.0) | 70B | **84.3** | 49.7 | **76.9** |
+
+- <sup>*</sup>ToRA-Code-34B is currently the first and only open-source model to achieve over 50% accuracy (pass@1) on the MATH dataset, which significantly outperforms GPT-4’s CoT result (51.0 vs. 42.5), and is competitive with GPT-4 solving problems with programs. By open-sourcing our codes and models, we hope more breakthroughs will come!
+
+- <sup>&dagger;</sup>10 math tasks include GSM8k, MATH, GSM-Hard, SVAMP, TabMWP, ASDiv, SingleEQ, SingleOP, AddSub, and MultiArith.
 ### Tool-Integrated Reasoning
 
 <p align="center">
