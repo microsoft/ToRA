@@ -91,7 +91,7 @@ We provide a script for inference, simply config the `MODEL_NAME_OR_PATH` and `D
 bash scritps/infer.sh
 ```
 
-We also open-source the model outputs from our best models (ToRA-Code-34B and ToRA-70B) in `outputs/` folder.
+We also open-source the [model outputs](/src/outputs/llm-agents/) from our best models (ToRA-Code-34B and ToRA-70B) in the `src/outputs/` folder.
 
 ### ⚖️ Evaluation
 
