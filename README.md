@@ -10,6 +10,8 @@ ToRA: A Tool-Integrated Reasoning Agent
 ![](https://img.shields.io/badge/Task-Mathematical%20Reasoning-orange)
 ![](https://img.shields.io/badge/Model-Released-blue)
 ![](https://img.shields.io/badge/Code%20License-MIT-green)
+<br>
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/tora-a-tool-integrated-reasoning-agent-for/math-word-problem-solving-on-math)](https://paperswithcode.com/sota/math-word-problem-solving-on-math?p=tora-a-tool-integrated-reasoning-agent-for)
 
 </div>
 
