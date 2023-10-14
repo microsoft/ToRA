@@ -20,7 +20,7 @@ ToRA: A Tool-Integrated Reasoning Agent
   <a href="https://arxiv.org/abs/2309.17452"><b>[📜 Paper]</b></a> •
   <a href="https://huggingface.co/llm-agents"><b>[🤗 HF Models]</b></a> •
   <!-- <a href="https://github.com/microsoft/ToRA"><b>[🐱 GitHub]</b></a> -->
-  <a href="https://3b60a8dd7f739c76f9.gradio.live"><b>[🐯 Gradio Demo]</b></a>
+  <a href="https://0177da924a16655839.gradio.live"><b>[🐯 Gradio Demo]</b></a>
   <br>
   <a href="https://twitter.com/zhs05232838/status/1708860992631763092"><b>[🐦 Twitter]</b></a> •
   <a href="https://www.reddit.com/r/LocalLLaMA/comments/1703k6d/tora_a_toolintegrated_reasoning_agent_for/"><b>[💬 Reddit]</b></a> •
@@ -42,7 +42,7 @@ Repo for "<a href="https://arxiv.org/abs/2309.17452" target="_blank">ToRA: A Too
 
 ## 🔥 News
 
-- [2023/10/13] 🔥🔥🔥 We release a demo for ToRA at [🐯 Gradio](https://3b60a8dd7f739c76f9.gradio.live/), try it out!!!
+- [2023/10/13] 🔥🔥🔥 We release a demo for ToRA at [🐯 Gradio](https://0177da924a16655839.gradio.live/), try it out!!!
 - [2023/10/08] 🔥 All ToRA models released at [🤗 HuggingFace](https://huggingface.co/llm-agents)!
 - [2023/09/29] ToRA paper, repo, and website released.
 
