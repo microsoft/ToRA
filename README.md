@@ -136,12 +136,12 @@ Type scores: {'Algebra': 67.3, 'Counting & Probability': 42.2, 'Geometry': 26.1,
 
 ### ⚡️ Training
 
-Due to some restrictions, ToRA-Corpus 16k is under review and cannot be released immediately. However, we open-source our complete training scripts as well as <em>output space shaping</em> pipelines for the community, and you may construct your own dataset for training.
+Due to some restrictions, ToRA-Corpus 16k is under review and cannot be released immediately. However, we open-source our complete training scripts for the community, and you may construct your own dataset for training.
 
 To train a model, run the following command:
 
 ```sh
-bash scritps/train.sh codellama 7b
+bash scripts/train.sh codellama 7b
 ```
 
 
