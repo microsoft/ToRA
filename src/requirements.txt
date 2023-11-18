@@ -1,6 +1,8 @@
+packaging
 xformers==0.0.21
 tqdm
 sentencepiece
+transformer==4.31.0
 datasets==2.14.5
 deepspeed==0.11.0
 accelerate==0.21.0
@@ -25,7 +27,6 @@ flash_attn==2.0.1
 fire
 flask
 gpustat
-prompt_toolkit
 rich
 bitarray
 ray==2.6.3
