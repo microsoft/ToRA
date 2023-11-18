@@ -43,7 +43,7 @@ TOTAL_BATCH_SIZE=128
 GRADIENT_ACC_STEPS=$(($TOTAL_BATCH_SIZE/$NUM_GPUS/$BATCH_SIZE_PER_GPU))
 echo "Training llama model ${MODEL_SIZE} using $NUM_GPUS GPUs, $BATCH_SIZE_PER_GPU batch size per GPU, $GRADIENT_ACC_STEPS gradient accumulation steps"
 
-TRAIN_FILE=../data/${DATA_NAME}/train.jsonl
+TRAIN_FILE=../data/${DATA_NAME}/examples.jsonl
 OUTPUT_DIR=/path/to/output/${BASE_MODEL}_${MODEL_SIZE}/${JOB_NAME}
 mkdir -p $OUTPUT_DIR
 
