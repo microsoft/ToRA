@@ -137,7 +137,7 @@ Type scores: {'Algebra': 67.3, 'Counting & Probability': 42.2, 'Geometry': 26.1,
 ### ⚡️ Training
 
 We're currently undergoing an internal review to open-source the ToRA-Corpus-16k, stay tuned!
-We also open-source our complete training scripts for the community, and you may construct your own dataset for training. We provide some example data in [data/tora-corpus/](/data/tora-corpus/).
+We also open-source our complete training scripts for the community, and you may construct your own dataset for training. We provide some example data in [data/tora-corpus/](/data/tora/).
 
 To train a model, run the following command:
 
