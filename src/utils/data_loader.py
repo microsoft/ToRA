@@ -2,17 +2,19 @@ import os
 import json
 import random
 from datasets import load_dataset, Dataset, concatenate_datasets
-from utils.utils import load_jsonl
+from utils.utils import load_jsonl, lower_keys
 
-def load_data(data_name, split):
-    data_file = f"data/{data_name}/{split}.json"
+def load_data(data_name, split, data_dir='./data'):
+    data_file = f"{data_dir}/{data_name}/{split}.jsonl"
     if os.path.exists(data_file):
         examples = list(load_jsonl(data_file))
     else:
         if data_name == "math":
-            dataset = load_dataset("competition_math", split=split, name="main", cache_dir="data_name/temp")
+            dataset = load_dataset("competition_math", split=split, name="main", cache_dir=f"{data_dir}/temp")
+        elif data_name == "theorem-qa":
+            dataset = load_dataset("wenhu/TheoremQA", split=split)
         elif data_name == "gsm8k":
-            dataset = load_dataset(data_name, split=split, name="main")
+            dataset = load_dataset(data_name, split=split)
         elif data_name == "gsm-hard":
             dataset = load_dataset("reasoning-machines/gsm-hard", split="train")
         elif data_name == "svamp":
@@ -26,7 +28,7 @@ def load_data(data_name, split):
             examples = []
             # four sub-tasks
             for data_name in ["singleeq", "singleop", "addsub", "multiarith"]:
-                sub_examples = list(load_jsonl(f"data_name/mawps/{data_name}.jsonl"))
+                sub_examples = list(load_jsonl(f"{data_dir}/mawps/{data_name}.jsonl"))
                 for example in sub_examples:
                     example['type'] = data_name
                 examples.extend(sub_examples)
@@ -36,7 +38,7 @@ def load_data(data_name, split):
             dataset = dataset.select(random.sample(range(len(dataset)), 1000))
         elif data_name == "tabmwp":
             examples = []
-            with open(f"data_name/tabmwp/tabmwp_{split}.json", "r") as f:
+            with open(f"{data_dir}/tabmwp/tabmwp_{split}.json", "r") as f:
                 data_dict = json.load(f)
                 examples.extend(data_dict.values())
             dataset = Dataset.from_list(examples)
@@ -45,7 +47,7 @@ def load_data(data_name, split):
             examples = []
             for data_name in ["reasoning_about_colored_objects", "penguins_in_a_table",\
                             "date_understanding", "repeat_copy_logic", "object_counting"]:
-                with open(f"data_name/bbh/bbh/{data_name}.json", "r") as f:
+                with open(f"{data_dir}/bbh/bbh/{data_name}.json", "r") as f:
                     sub_examples = json.load(f)["examples"]
                     for example in sub_examples:
                         example['type'] = data_name
@@ -54,15 +56,16 @@ def load_data(data_name, split):
         else:
             raise NotImplementedError(data_name)
 
-        if 'idx' not in dataset.column_names:
-            dataset = dataset.map(lambda x, i: {'idx': i, **x}, with_indices=True)
-
-        os.makedirs(f"data_name/{data_name}", exist_ok=True)
-        dataset.to_json(data_file)
         examples = list(dataset)
+        examples = [lower_keys(example) for example in examples]
+        dataset = Dataset.from_list(examples)
+        os.makedirs(f"{data_dir}/{data_name}", exist_ok=True)
+        dataset.to_json(data_file)
+
+    # add 'idx' in the first column
+    if 'idx' not in examples[0]:
+        examples = [{'idx': i, **example} for i, example in enumerate(examples)]
 
     # dedepulicate & sort
-    examples = {example['idx']: example for example in examples}
-    examples = list(examples.values())
     examples = sorted(examples, key=lambda x: x['idx'])
     return examples

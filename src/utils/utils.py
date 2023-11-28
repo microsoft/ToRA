@@ -36,9 +36,22 @@ def save_jsonl(samples, save_path):
     print("Saved to", save_path)
 
 
+def lower_keys(example):  
+    new_example = {}  
+    for key, value in example.items():  
+        if key != key.lower():  
+            new_key = key.lower()  
+            new_example[new_key] = value  
+        else:  
+            new_example[key] = value  
+    return new_example 
+
+
 def load_prompt(data_name, prompt_type):
     if data_name in ['gsm-hard', 'svamp', 'tabmwp', 'asdiv', 'mawps']:
         data_name = "gsm8k"
+    if data_name in ['math-oai']:
+        data_name = "math"
     if prompt_type in ['platypus_fs', 'wizard_zs']:
         prompt_type = "cot"
     prompt_path = "./prompts/{}/{}.md".format(prompt_type, data_name)
@@ -56,7 +69,7 @@ def construct_prompt(args, example):
     demo_prompt = load_prompt(args.data_name, args.prompt_type)
     if args.use_train_prompt_format:
         full_prompt = f"<|user|>\n{example['question']}\n<|assistant|>\n"
-    elif "tora" in args.prompt_type or "pot" in args.prompt_type:
+    elif "tora" in args.prompt_type:
         context = f"Question: {example['question']}\n\nSolution:"
         full_prompt = demo_prompt + context
     elif args.prompt_type in ["direct", "cot"]:
@@ -83,19 +96,33 @@ def construct_prompt(args, example):
         raise NotImplementedError(args.prompt_type)
     return full_prompt
 
-def show_sample(sample):
+key_map = {
+    "gt": "Ground Truth",
+    "pred": "Prediction",
+    "gt_cot": "Reference CoT",
+    "score": "Score",
+}
+
+def show_sample(sample, print_all_preds=False):
     print("=="*20)
-    print("idx:", sample['idx'])
-    for key in ["type", "level"]:
+    for key in ["idx", "type", "level", "dataset"]:
         if key in sample:
-            print("{}: {}".format(key, sample[key]))
-    print("question:", sample['question'])
+            # capitalize
+            print("{}: {}".format(key[0].upper() + key[1:], sample[key]))
+    print("Question:", repr(sample['question']))
     if 'code' in sample:
-        for code in sample['code']:
-            print('-'*20)
-            print("code:", code)
-        print("execution", sample['report'])
-    for key in ["pred", "gt", "score", "unit", "gt_cot"]:
+        if print_all_preds:
+            for code in sample['code']:
+                print('-'*20)
+                print("code:", code)
+            print("Execution:", sample['report'])
+        else:
+            print("Solution:\n", sample['code'][0])
+            print("Execution:", sample['report'][0])
+    if 'pred' in sample:
+        print("Prediction:", repr(sample['pred'][0]))
+    for key in ["gt", "score", "unit", "gt_cot"]:
         if key in sample:
-            print("{}: {}".format(key, sample[key]))
+            _key  = key_map.get(key, key)
+            print("{}: {}".format(_key, repr(sample[key])))
     print()

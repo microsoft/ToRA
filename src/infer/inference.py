@@ -1,5 +1,7 @@
 """
-This file is based on: https://github.com/microsoft/ProphetNet/tree/master/CRITIC
+This script support vllm batch inference with cot/pal/tora prompt.
+Also sopport inference of fine-tuned models like WizardMath/ToRA.
+Code based on: https://github.com/microsoft/ProphetNet/tree/master/CRITIC
 """
 import random
 import os
@@ -19,8 +21,10 @@ from utils.python_executor import PythonExecutor
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_name", default="gsm8k", type=str)
+    parser.add_argument("--data_dir", default="./data", type=str)
     parser.add_argument("--model_name_or_path", default="gpt-4", type=str)
-    parser.add_argument("--prompt_type", default="pal", type=str)
+    parser.add_argument("--output_dir", default="./output", type=str)
+    parser.add_argument("--prompt_type", default="tora", type=str)
     parser.add_argument("--split", default="test", type=str)
     parser.add_argument("--num_test_sample", default=-1, type=int) # -1 for full data
     parser.add_argument("--seed", default=0, type=int)
@@ -28,7 +32,8 @@ def parse_args():
     parser.add_argument("--end", default=-1, type=int)
     parser.add_argument("--temperature", default=0, type=float)
     parser.add_argument("--n_sampling", default=1, type=int)
-    parser.add_argument("--top_p", default=0.95, type=float)
+    parser.add_argument("--top_p", default=1, type=float)
+    parser.add_argument("--max_tokens_per_call", default=1024, type=int)
     parser.add_argument("--shuffle", action="store_true")
     parser.add_argument("--use_train_prompt_format", action="store_true")
     args = parser.parse_args()
@@ -36,12 +41,14 @@ def parse_args():
     return args
 
 
-def main(args):
-    examples = load_data(args.data_name, args.split)
+def prepare_data(args):
+    examples = load_data(args.data_name, args.split, args.data_dir)
 
     # sample `num_test_sample` from dataset
     if args.num_test_sample > 0:
         examples = random.sample(examples, args.num_test_sample)
+    elif args.num_test_sample == -1:
+        args.num_test_sample = len(examples)
     
     # shuffle
     if args.shuffle:
@@ -53,19 +60,18 @@ def main(args):
         args.end = len(examples)
     examples = examples[args.start:args.end]
 
-    # get out_file
+    # get out_file name
     dt_string = datetime.now().strftime("%m-%d_%H-%M")
     model_name = "/".join(args.model_name_or_path.split("/")[-2:])
-    file_prompt_type = args.prompt_type.replace("program_only", "tora")
-    out_file_prefix = f'{args.split}_{file_prompt_type}_{args.num_test_sample}_seed{args.seed}_t{args.temperature}'
-    out_file = f'outputs/{model_name}/{args.data_name}/{out_file_prefix}_s{args.start}_e{args.end}_{dt_string}.jsonl'
-    os.makedirs(f'outputs/{model_name}/{args.data_name}', exist_ok=True)
+    out_file_prefix = f'{args.split}_{args.prompt_type}_{args.num_test_sample}_seed{args.seed}_t{args.temperature}'
+    out_file = f'{args.output_dir}/{model_name}/{args.data_name}/{out_file_prefix}_s{args.start}_e{args.end}_{dt_string}.jsonl'
+    os.makedirs(f'{args.output_dir}/{model_name}/{args.data_name}', exist_ok=True)
 
-    # all files in the output folder
-    processed_files = [f for f in os.listdir(f"outputs/{model_name}/{args.data_name}/") if f.endswith(".jsonl") and f.startswith(out_file_prefix)]    
+    # load all processed samples
+    processed_files = [f for f in os.listdir(f"{args.output_dir}/{model_name}/{args.data_name}/") if f.endswith(".jsonl") and f.startswith(out_file_prefix)]    
     processed_samples = []
     for f in processed_files:
-        processed_samples.extend(list(load_jsonl(f"outputs/{model_name}/{args.data_name}/{f}")))
+        processed_samples.extend(list(load_jsonl(f"{args.output_dir}/{model_name}/{args.data_name}/{f}")))
 
     # dedepulicate
     processed_samples = {sample['idx']: sample for sample in processed_samples}
@@ -76,9 +82,13 @@ def main(args):
     print(f"Idx {args.start} - {args.end}: Remain {len(examples)}/{total_examples} samples.")
     if len(examples) == 0:
         pass
-        # return
     else:
         print(examples[0])
+    return examples, processed_samples, out_file
+
+
+def main(args):
+    examples, processed_samples, out_file = prepare_data(args)
 
     # init python executor
     if "pal" in args.prompt_type:
@@ -102,7 +112,8 @@ def main(args):
         sample = {'idx': idx, 'question': example['question'], 'gt_cot': gt_cot, 'gt': gt_ans, 'prompt': full_prompt}
 
         # add remain fields
-        for key in ['level', 'type', 'unit', 'solution_type', 'choices', 'solution', 'ques_type', 'ans_type']:
+        for key in ['level', 'type', 'unit', 'solution_type', 'choices', 'solution', 'ques_type', \
+            'ans_type', 'answer_type', 'dataset', 'subfield', 'filed', 'theorem', 'answer']:
             if key in example:
                 sample[key] = example[key]
         samples.append(sample)  
@@ -119,7 +130,7 @@ def main(args):
     end_prompts = []
 
     max_func_call = 1 if args.prompt_type in ['cot', 'pal'] else 4
-    stop_tokens = ["</s>", "---", "```output"]
+    stop_tokens = ["</s>", "```output"]
 
     if args.prompt_type in ['cot']:
         stop_tokens.append("\n\n")
@@ -140,7 +151,7 @@ def main(args):
         outputs = llm.generate(prompts, SamplingParams(
                         temperature=args.temperature,
                         top_p=args.top_p,
-                        max_tokens=1024,
+                        max_tokens=args.max_tokens_per_call,
                         n=1,
                         stop=stop_tokens,
         ))
@@ -158,12 +169,12 @@ def main(args):
             if args.prompt_type == "pal":
                 remain_prompts.append((i, query))
                 if "```python" in output:
-                    output = extract_program(output)
+                    output = extract_program(query)
                 remain_codes.append(output)
             elif args.prompt_type == "cot":
                 end_prompts.append((i, query))
             elif ("boxed" not in output and output.endswith("```")):
-                program = extract_program(output)
+                program = extract_program(query)
                 remain_prompts.append((i, query))
                 remain_codes.append(program)
             else:
@@ -173,13 +184,8 @@ def main(args):
         remain_results = executor.batch_apply(remain_codes)
         for k in range(len(remain_prompts)):
             i, query = remain_prompts[k]
-            pred, report = remain_results[k]
-            pred, report = str(pred).strip(), str(report).strip()
-            if len(pred) > 100:
-                pred = pred[:50] + "..." + pred[-50:]
-            if len(report) > 100:
-                report = report[:50] + "..." + report[-50:]
-            exec_result = pred if pred else report
+            res, report = remain_results[k]
+            exec_result = res if res else report
             if "pal" in args.prompt_type:
                 exec_result = "\\boxed{" + exec_result + "}"
             exec_result = f"\n```output\n{exec_result}\n```\n"

@@ -1,10 +1,10 @@
+import os
 import io
 import regex
 import pickle
 import traceback
 import copy
 import datetime
-import multiprocessing
 import dateutil.relativedelta
 import multiprocess
 from multiprocess import Pool
@@ -94,7 +94,7 @@ class PythonExecutor:
                 with redirect_stdout(program_io):
                     timeout(timeout_length)(runtime.exec_code)('\n'.join(code))
                 program_io.seek(0)
-                result = program_io.readlines()[-1]
+                result = program_io.read()
             elif answer_symbol:
                 timeout(timeout_length)(runtime.exec_code)('\n'.join(code))
                 result = runtime._global_vars[answer_symbol]
@@ -104,23 +104,30 @@ class PythonExecutor:
             else:
                 timeout(timeout_length)(runtime.exec_code)('\n'.join(code[:-1]))
                 result = timeout(timeout_length)(runtime.eval_code)(code[-1])
-            exec_info = "Done"
+            report = "Done"
             str(result)
             pickle.dumps(result) # serialization check
         except:
             result = ''
-            exec_info = traceback.format_exc().split('\n')[-2]
-        return result, exec_info
+            report = traceback.format_exc().split('\n')[-2]
+        return result, report
 
     def apply(self, code):
         return self.batch_apply([code])[0]
+
+    @staticmethod
+    def truncate(s, max_length=400):
+        half = max_length // 2
+        if len(s) > max_length:
+            s = s[:half] + "..." + s[-half:]
+        return s
 
     def batch_apply(self, batch_code):
         all_code_snippets = self.process_generation_to_code(batch_code)
 
         timeout_cnt = 0
         all_exec_results = []
-        with ProcessPool(max_workers=min(len(all_code_snippets), multiprocessing.cpu_count())) as pool:
+        with ProcessPool(max_workers=min(len(all_code_snippets), os.cpu_count())) as pool:
             executor = partial(
                 self.execute,
                 get_answer_from_stdout=self.get_answer_from_stdout,
@@ -157,8 +164,11 @@ class PythonExecutor:
                 progress_bar.close() 
 
         batch_results = []
-        for code, (result, exec_info) in zip(all_code_snippets, all_exec_results):
-            batch_results.append((result, exec_info))
+        for code, (res, report) in zip(all_code_snippets, all_exec_results):
+            # post processing
+            res, report = str(res).strip(), str(report).strip()
+            res, report = self.truncate(res), self.truncate(report)
+            batch_results.append((res, report))
         return batch_results
 
 
