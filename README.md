@@ -95,6 +95,7 @@ We recommend using [Conda](https://docs.conda.io/projects/miniconda) to manage y
 git clone https://github.com/microsoft/ToRA.git && cd ToRA/src
 conda create -n tora python=3.10
 conda activate tora
+pip install packaging==22.0
 pip install torch==2.0.1 --index-url https://download.pytorch.org/whl/cu118 # CUDA 11.8 for example
 pip install -r requirements.txt
 ```
