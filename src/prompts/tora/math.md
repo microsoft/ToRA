@@ -109,12 +109,12 @@ Let's use `sympy` to solve the inequality:
 ```python
 from sympy import symbols, simplify
 from sympy.solvers.inequalities import solve_univariate_inequality
-from sympy.core.relational import LessThan
+from sympy.core.relational import StrictLessThan
 
 def solve_inequality():
     x = symbols('x')
     expression = (x**2 - 25) / (x + 5)
-    inequality = LessThan(expression, 0)
+    inequality = StrictLessThan(expression, 0)
     solution = solve_univariate_inequality(inequality, x, relational=False)
     simplified_solution = simplify(solution)
     
@@ -124,7 +124,7 @@ result = solve_inequality()
 print(result)
 ```
 ```output
-Union(Interval.open(-oo, -5), Interval.Lopen(-5, 5))
+Union(Interval.open(-oo, -5), Interval.open(-5, 5))
 ```
 The answer is $\boxed{(-\infty,-5)\cup(-5,5)}$
 
