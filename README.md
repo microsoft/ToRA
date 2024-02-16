@@ -30,7 +30,7 @@ ToRA: A Tool-Integrated Reasoning Agent
 </p>
 
 <p align="center">
-Repo for "<a href="https://arxiv.org/abs/2309.17452" target="_blank">ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving</a>"
+Repo for "<a href="https://arxiv.org/abs/2309.17452" target="_blank">ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving</a>" [ICLR'2024]
 </p>
 
 <p align="center">
