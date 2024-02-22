@@ -152,13 +152,13 @@ bash scripts/train.sh codellama 7b
 If you find this repository helpful, please consider citing our paper:
 
 ```
-@misc{gou2023tora,
-      title={ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving}, 
-      author={Zhibin Gou and Zhihong Shao and Yeyun Gong and yelong shen and Yujiu Yang and Minlie Huang and Nan Duan and Weizhu Chen},
-      year={2023},
-      eprint={2309.17452},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@inproceedings{
+gou2024tora,
+title={To{RA}: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving},
+author={Zhibin Gou and Zhihong Shao and Yeyun Gong and yelong shen and Yujiu Yang and Minlie Huang and Nan Duan and Weizhu Chen},
+booktitle={The Twelfth International Conference on Learning Representations},
+year={2024},
+url={https://openreview.net/forum?id=Ep0TtjVoap}
 }
 ```
 
