@@ -50,7 +50,7 @@ def math_equal(prediction: Union[bool, float, str],
                 except Exception:
                     continue
             return False
-    except:
+    except Exception:
         pass
 
     if not prediction and prediction not in [0, False]:
@@ -101,7 +101,7 @@ def symbolic_equal(a, b):
         for f in [parse_latex, parse_expr]:
             try:
                 return f(s)
-            except:
+            except Exception:
                 pass
         return s
     a = _parse(a)
@@ -110,13 +110,13 @@ def symbolic_equal(a, b):
     try:
         if simplify(a-b) == 0:
             return True
-    except:
+    except Exception:
         pass
 
     try:
         if isclose(N(a), N(b), rel_tol=1e-3):
             return True
-    except:
+    except Exception:
         pass
     return False
 
